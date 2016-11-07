@@ -1,2 +1,2 @@
 Install-PackageProvider -Name NuGet -force
-Install-Module xdscfirewall
+Install-Module xdscfirewall -force
