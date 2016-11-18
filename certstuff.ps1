@@ -33,4 +33,4 @@ Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $se
 
 
 $cred = Get-Credential
-Enter-PSSession -ConnectionUri https://13.94.235.195:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
+Enter-PSSession -ConnectionUri https://13.95.228.51:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate

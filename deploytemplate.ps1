@@ -4,7 +4,7 @@
     [string]$certificatePath = "c:\",
     [string]$armTemplatePath = "C:\Source\irobins\MyLab01\MyLab01\azuredeploy.json",
     [string]$armParamPath = "C:\Source\irobins\MyLab01\MyLab01\azuredeploy.parameters.json",
-    [string]$resourcegroupname = "MyLab01",
+    [string]$resourcegroupname = "MyLab02",
     [string]$certificateStore = "my",
     [string]$azureregion = 'westeurope'
 )
@@ -32,9 +32,9 @@ $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 # Generate JSON object for the encoded PFX
 $jsonObject = @"
 {
-  "data": $filecontentencoded,
+  "data": "$filecontentencoded",
   "dataType" :"pfx",
-  "password": $securePassword
+  "password": "$certificatePassword"
 }
 "@
 
@@ -50,7 +50,7 @@ Remove-item $certificatePath -Force
 $certificate | Remove-Item
 
 # Check to see if the resource group already exists
-$ResourceGroup = Get-AzureRmResourceGroup -Name $resourcegroupname
+$ResourceGroup = Get-AzureRmResourceGroup -Name $resourcegroupname -ErrorAction SilentlyContinue
 
 # If not, create it
 If ($ResourceGroup -eq $null) {
